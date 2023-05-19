@@ -3,8 +3,16 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#808080</color>
+    <color name="red">#FFD1DC</color>
+    <color name="greenPolar">#98FB98</color>
+    <color name="coral">#EFA94A</color>
 
-    <color name="blue">#0000FF</color>
+
+    <color name="xz1">#ECEABE</color>
+    <color name="xz">#E4717A</color>
+    <color name="xz2">#EBC2AF</color>
+
+    <color name="blue">#AFDAFC</color>
     <color name="blueLight">#00BCD4</color>
     <color name="teal">#673AB7</color>
 </resources>

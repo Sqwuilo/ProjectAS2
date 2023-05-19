@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Random;
 
 
-public class NotesListAdaptor extends RecyclerView.Adapter <NotesViewHolder> {
+public class NotesListAdaptor extends RecyclerView.Adapter<NotesViewHolder> {
 
     Context context;
     List<Notes> list;
@@ -43,19 +43,19 @@ public class NotesListAdaptor extends RecyclerView.Adapter <NotesViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull NotesViewHolder holder, int position) {
 
-    holder.textView_title.setText(list.get(position).getTitle());
-    holder.textView_title.setSelected(true);
+        holder.textView_title.setText(list.get(position).getTitle());
+        holder.textView_title.setSelected(true);
 
-    holder.TextView_notes.setText(list.get(position).getNotes());
+        holder.TextView_notes.setText(list.get(position).getNotes());
 
-    holder.TextView_date.setText(list.get(position).getDate());
-    holder.TextView_date.setSelected(true);
+        holder.TextView_date.setText(list.get(position).getDate());
+        holder.TextView_date.setSelected(true);
 
-    if (list.get(position).isPinned()){
-        holder.imageView_pin.setImageResource(R.drawable.icon_pin);
-    } else {
-        holder.imageView_pin.setImageResource(0);
-    }
+        if (list.get(position).isPinned()) {
+            holder.imageView_pin.setImageResource(R.drawable.icon_pin);
+        } else {
+            holder.imageView_pin.setImageResource(0);
+        }
         int colorCode = getRandomColor();
         holder.notes_conteiner.setCardBackgroundColor(holder.itemView.getResources().getColor(colorCode, null));
 
@@ -77,21 +77,33 @@ public class NotesListAdaptor extends RecyclerView.Adapter <NotesViewHolder> {
     }
 
 
-    private int getRandomColor(){
+    private int getRandomColor() {
         List<Integer> colorCode = new ArrayList<>();
         colorCode.add(R.color.blueLight);
+        colorCode.add(R.color.xz);
+        colorCode.add(R.color.xz1);
+        colorCode.add(R.color.xz2);
         colorCode.add(R.color.blue);
+        colorCode.add(R.color.white);
+        colorCode.add(R.color.red);
+        colorCode.add(R.color.greenPolar);
+        colorCode.add(R.color.coral);
         colorCode.add(R.color.teal);
 
         Random random = new Random();
         int randomColor = random.nextInt(colorCode.size());
-        return randomColor;
+        return colorCode.get(randomColor);
     }
-
 
     @Override
     public int getItemCount() {
         return list.size();
+    }
+
+
+    public void filterList (List<Notes> filteredList){
+        list = filteredList;
+        notifyDataSetChanged();
     }
 }
 
@@ -101,8 +113,6 @@ class NotesViewHolder extends RecyclerView.ViewHolder {
     CardView notes_conteiner;
     TextView textView_title, TextView_notes, TextView_date;
     ImageView imageView_pin;
-
-
 
 
     public NotesViewHolder(@NonNull View itemView) {
